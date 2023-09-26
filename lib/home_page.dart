@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:zaptek_rental/details_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -259,8 +260,19 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  'assets/dreamsville_home.png',
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const DetailsPage();
+                        },
+                      ),
+                    );
+                  },
+                  child: Image.asset(
+                    'assets/dreamsville_home.png',
+                  ),
                 ),
                 SizedBox(width: horizontalConverter(10)),
                 Image.asset(
@@ -270,8 +282,8 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(
-                paddingHorizontal, 0, paddingHorizontal, 0),
+            padding:
+                EdgeInsets.fromLTRB(paddingHorizontal, 0, paddingHorizontal, 0),
             child: SizedBox(
               height: verticalConverter(19),
               child: Row(
