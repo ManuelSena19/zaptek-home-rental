@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zaptek_rental/home_page.dart';
+import 'menu_page.dart' as m;
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: const m.Drawer(),
     );
   }
 }

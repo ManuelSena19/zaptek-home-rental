@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:zaptek_rental/details_page.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  Color grey = const Color.fromRGBO(131, 131, 131, 1);
-  @override
   Widget build(BuildContext context) {
+    Color grey = const Color.fromRGBO(131, 131, 131, 1);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -43,34 +39,44 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Location',
-                      style: GoogleFonts.raleway(
-                        color: grey,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Jakarta',
-                          style: GoogleFonts.raleway(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        SizedBox(width: verticalConverter(7)),
-                        Icon(
-                          Icons.keyboard_arrow_down,
+                GestureDetector(
+                  onTap: () {
+                    if(ZoomDrawer.of(context)!.isOpen()){
+                      ZoomDrawer.of(context)!.close();
+                    }
+                    else{
+                      ZoomDrawer.of(context)!.open();
+                    }
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Location',
+                        style: GoogleFonts.raleway(
                           color: grey,
-                        )
-                      ],
-                    ),
-                  ],
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Jakarta',
+                            style: GoogleFonts.raleway(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          SizedBox(width: verticalConverter(7)),
+                          Icon(
+                            Icons.keyboard_arrow_down,
+                            color: grey,
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
                 Expanded(child: Container()),
                 Image.asset('assets/notification.png')
